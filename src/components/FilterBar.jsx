@@ -5,10 +5,15 @@ import { setFilterStatus } from '../store';
 export default function FilterBar() {
   const dispatch = useDispatch();
   const todos = useSelector(s => s.todos);
+  const searchTerm = useSelector(s => s.searchTerm);
   const filterStatus = useSelector(s => s.filterStatus);
 
-  const total = todos.length;
-  const completed = todos.filter(t => t.status === 'Completed').length;
+  const searched = todos.filter(t =>
+    t.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const total = searched.length;
+  const completed = searched.filter(t => t.status === 'Completed').length;
   const incomplete = total - completed;
 
   const filters = [
