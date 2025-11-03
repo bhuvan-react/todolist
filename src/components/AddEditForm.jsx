@@ -6,7 +6,7 @@ export default function AddEditForm({ todo, onSubmit, onCancel }) {
     const data = new FormData(e.target);
     const title = data.get('title').trim();
     const description = data.get('description').trim();
-    const status = data.get('status') || 'Pending'; // Always get from form
+    const status = data.get('status') || 'Pending'; 
     if (title && description) {
       onSubmit(title, description, status);
     }
@@ -33,7 +33,6 @@ export default function AddEditForm({ todo, onSubmit, onCancel }) {
           variant="outlined"
         />
         
-        {/* Always show status dropdown */}
         <TextField
           name="status"
           select
